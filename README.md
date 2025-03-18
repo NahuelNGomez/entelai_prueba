@@ -36,3 +36,15 @@ películas.
 El candidato debe enviar un repositorio con el código fuente en GitHub o GitLab, incluyendo
 todas las instrucciones necesarias para ejecutar el proyecto. Se recomienda proporcionar un
 breve video o capturas de pantalla mostrando la funcionalidad de la aplicación.
+
+
+# Notas
+
+## Backend
+- Correr env
+- pip install flask
+- Ejecutar python app.py
+
+## Frontend
+- npm install
+- npm run dev
