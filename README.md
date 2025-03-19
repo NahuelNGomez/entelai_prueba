@@ -39,10 +39,10 @@ breve video o capturas de pantalla mostrando la funcionalidad de la aplicación.
 
 
 # Notas
-
+- Tener una archivo backend/data/movies.cvs
 ## Backend
-- Correr env
-- pip install flask
+- Correr env (python -m venv env)
+- pip install flask (pip install -r requirements)
 - Ejecutar python app.py
 
 ## Frontend

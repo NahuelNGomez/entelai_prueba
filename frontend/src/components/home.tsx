@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Search } from "lucide-react"
-import MovieList from  "../components/movieList"
+import MovieList from "../components/movieList"
 import React from "react"
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
         }
 
         const data = await response.json()
-        setMovies(data)
+        setMovies(data.movies)
         setError(null)
       } catch (err) {
         console.error("Error fetching movies:", err)
@@ -65,7 +65,12 @@ export default function Home() {
         </div>
       )}
 
-      <MovieList movies={movies} loading={loading} />
+      {
+        movies && (
+          <MovieList movies={movies} loading={loading} />
+        )
+
+      }
     </main>
   )
 }

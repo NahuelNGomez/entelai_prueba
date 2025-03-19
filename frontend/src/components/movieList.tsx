@@ -1,4 +1,3 @@
-
 import React from "react"
 
 interface MovieListProps {
@@ -6,13 +5,12 @@ interface MovieListProps {
   loading: boolean
 }
 export interface Movie {
-    id: number
-    title: string
-    poster_path?: string
-    release_date?: string
-    rating?: number
-    overview?: string
-  }
+  title: string
+  genre?: string
+  duration?: string
+  avg_vote?: number
+  director?: string
+}
 
 export default function MovieList({ movies, loading }: MovieListProps) {
   if (loading) {
@@ -20,10 +18,10 @@ export default function MovieList({ movies, loading }: MovieListProps) {
       <div className="">
         {[...Array(8)].map((_, index) => (
           <div key={index} >
-            <div/>
+            <div />
             <div>
-              <div/>
-              <div/>
+              <div />
+              <div />
             </div>
           </div>
         ))}
@@ -41,34 +39,27 @@ export default function MovieList({ movies, loading }: MovieListProps) {
   }
 
   return (
-    <div>
-      {movies.map((movie) => (
-        <div key={movie.id}>
-          <div>
-            {movie.poster_path ? (
-              <img
-                src={movie.poster_path || "/placeholder.svg"}
-                alt={movie.title}
-              />
-            ) : (
-              <div>No image</div>
-            )}
-          </div>
-          <div >
-            <h3>{movie.title}</h3>
-            <p>
-              {movie.release_date ? new Date(movie.release_date).getFullYear() : "Unknown year"}
-            </p>
-            {movie.rating && (
-              <div>
-                <span>
-                  ★ {movie.rating}
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
+    <section>
+      <table border={1} style={{ width: "100%", borderCollapse: "collapse" }}>
+        <thead>
+          <tr style={{ backgroundColor: "#b2b2b2" }}>
+            <th style={{ padding: "8px", textAlign: "left" }}>Título</th>
+            <th style={{ padding: "8px", textAlign: "left" }}>Voto Promedio</th>
+            <th style={{ padding: "8px", textAlign: "left" }}>Género</th>
+            <th style={{ padding: "8px", textAlign: "left" }}>Director</th>
+          </tr>
+        </thead>
+        <tbody>
+          {movies.map((movie, index) => (
+            <tr key={index} style={{ borderBottom: "1px solid #ddd" }}>
+              <td style={{ padding: "8px" }}>{movie.title}</td>
+              <td style={{ padding: "8px" }}>★ {movie.avg_vote}</td>
+              <td style={{ padding: "8px" }}>{movie.genre}</td>
+              <td style={{ padding: "8px" }}>{movie.director}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
   )
 }
