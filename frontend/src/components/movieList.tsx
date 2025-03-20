@@ -25,8 +25,8 @@ export default function MovieList({ movies, loading }: MovieListProps) {
   if (movies.length === 0) {
     return (
       <div>
-        <h3>No movies found</h3>
-        <p>Try adjusting your search criteria</p>
+        <h3>No se encontraron películas</h3>
+        <p>Trata de ajustar tu critero de búsqueda</p>
       </div>
     );
   }

@@ -56,7 +56,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>Movie Catalog</h1>
+      <h1>Catálogo de películas</h1>
 
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
