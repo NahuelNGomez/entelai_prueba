@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import MovieList from "./components/MovieList";
-import SearchBar from "./components/searchBar";
+import SearchBar from "./components/SearchBar";
 import Pagination from "./components/Pagination";
 import React from "react";
 import "./App.css";
