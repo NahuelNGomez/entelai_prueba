@@ -65,10 +65,10 @@ pip install -r requirements.txt
 2. Ejecutar el servidor Flask:
 
 ```bash
-python3 app.py
+python app.py
 ```
 
-El backend quedará ejecutándose en la terminal y estará disponible en `http://localhost:8000`.
+El backend quedará ejecutándose en la terminal y estará disponible en `http://localhost:5000`.
 
 ### **Paso 2 - Configuración y Ejecución del Frontend**
 1. Instalar las dependencias de React:
