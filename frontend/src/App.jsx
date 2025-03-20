@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import MovieList from "./components/movieList";
+import MovieList from "./components/MovieList";
 import SearchBar from "./components/searchBar";
+import Pagination from "./components/Pagination";
 import React from "react";
 import "./App.css";
 
@@ -9,9 +10,9 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [limit] = useState(20); // Cantidad máxima de películas por página
-  const [offset, setOffset] = useState(0); // Para moverse entre páginas
-  const [totalMovies, setTotalMovies] = useState(0); // Total de películas disponibles
+  const [limit] = useState(20);
+  const [offset, setOffset] = useState(0);
+  const [totalMovies, setTotalMovies] = useState(0);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -26,7 +27,7 @@ export default function App() {
 
         const data = await response.json();
         setMovies(data.movies);
-        setTotalMovies(data.total); // El backend debe devolver la cantidad total de películas
+        setTotalMovies(data.total);
         setError(null);
       } catch (err) {
         console.error("Error fetching movies:", err);
@@ -39,16 +40,14 @@ export default function App() {
 
     const timeoutId = setTimeout(fetchMovies, 300);
     return () => clearTimeout(timeoutId);
-  }, [searchTerm, offset]);
+  }, [searchTerm, offset, limit]);
 
-  // Función para avanzar página
   const nextPage = () => {
     if (offset + limit < totalMovies) {
       setOffset(offset + limit);
     }
   };
 
-  // Función para retroceder página
   const prevPage = () => {
     if (offset > 0) {
       setOffset(offset - limit);
@@ -62,25 +61,11 @@ export default function App() {
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       {error && <div role="alert"><span>{error}</span></div>}
-      <div style={paginationStyle}>
-        <button onClick={prevPage} disabled={offset === 0}>⬅️ Anterior</button>
-        <span>
-          Página {Math.floor(offset / limit) + 1} de {Math.ceil(totalMovies / limit)}
-        </span>
-        <button onClick={nextPage} disabled={offset + limit >= totalMovies}>Siguiente ➡️</button>
-      </div>
+      <Pagination offset={offset} limit={limit} totalMovies={totalMovies} nextPage={nextPage} prevPage={prevPage} />
 
-      <MovieList movies={movies} loading={loading} />
-
+      <section className="spaceTable">
+        <MovieList movies={movies} loading={loading} />
+      </section>
     </main>
   );
 }
-
-const paginationStyle = {
-  color: "#f3f3f3",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "10px",
-  marginTop: "20px",
-};

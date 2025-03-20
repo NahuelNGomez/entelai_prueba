@@ -1,0 +1,13 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+.spanStyle {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}

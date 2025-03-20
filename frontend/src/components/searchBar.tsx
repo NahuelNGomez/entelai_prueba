@@ -1,8 +1,9 @@
 import React from "react";
+import "./SearchBar.css"
 
 export default function SearchBar({ searchTerm, setSearchTerm }) {
   return (
-    <div style={searchBarStyle}>
+    <div className="searchBarStyle">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -19,31 +20,11 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
       </svg>
       <input
         type="text"
-        placeholder="Search movies by title..."
+        placeholder="Filtrar películas por título..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={inputStyle}
+        className="inputStyle"
       />
     </div>
   );
-};
-
-const searchBarStyle = {
-  display: "flex",
-  alignItems: "center",
-  gap: "8px",
-  border: "1px solid #ccc",
-  borderRadius: "20px",
-  padding: "8px 12px",
-  width: "100%",
-  maxWidth: "300px",
-  backgroundColor: "#f9f9f9",
-};
-
-const inputStyle = {
-  border: "none",
-  outline: "none",
-  flex: 1,
-  fontSize: "14px",
-  background: "transparent",
 };
